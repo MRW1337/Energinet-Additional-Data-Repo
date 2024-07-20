@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created manually by Lars Truelsen -->
+<rdf:RDF xmlns:adms="http://www.w3.org/ns/adms#" xmlns:cim="https://cim.ucaiug.io/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dcat-cim="https://cim4.eu/ns/dcat-cim#" xmlns:dcterms="http://purl.org/dc/terms/#" xmlns:eumd="https://cim4.eu/ns/Metadata-European#" xmlns:euvoc="http://publications.europa.eu/ontology/euvoc#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:nc="https://cim4.eu/ns/nc#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+	<md:FullModel rdf:about="urn:uuid:b2d1215a-a124-4b6e-9df5-85ecdce9793b">
+		<dcterms:identifier>b2d1215a-a124-4b6e-9df5-85ecdce9793b</dcterms:identifier>
+		<dcterms:conformsTo>https://ap.cim4.eu/Contingency-EU/2.3</dcterms:conformsTo>
+		<eumd:Model.applicationSoftware>Pluto - Additional Data</eumd:Model.applicationSoftware>
+		<dcterms:Model.description>DKW - Contingencies</dcterms:Model.description>
+		<prov:Model.generatedAtTime>2024-07-01T12:00:00Z</prov:Model.generatedAtTime>
+		<dcterms:publisher rdf:resource="https://www.energinet.dk/Pluto/AdditionalData" />
+		<dcterms:references rdf:resource="urn:uuid:17a8f234-eb27-434e-8758-0142e797e2cb" />
+		<dcat:keyword>CO</dcat:keyword>
+		<dcat:version>1</dcat:version>
+		<dcat:startDate>2024-07-01T12:00:00Z</dcat:startDate>
+		<dcat:endDate>2025-05-01T12:00:00Z</dcat:endDate>
+	</md:FullModel>
+
+	<nc:OrdinaryContingency rdf:ID="_7e31c67d-67ba-4592-8ac1-9e806d697c8e">
+		<cim:IdentifiedObject.name>OrdinaryContingency_C_ASR-REV</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is an ordinary contingency - Line</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>7e31c67d-67ba-4592-8ac1-9e806d697c8e</cim:IdentifiedObject.mRID>
+		<nc:Contingency.normalMustStudy>true</nc:Contingency.normalMustStudy>
+	</nc:OrdinaryContingency>
+	<cim:ContingencyEquipment rdf:ID="_19bfe9d5-5d04-4c3c-9919-ca1b2d1215ae">
+		<cim:IdentifiedObject.name>ContingencyEquipment_C_ASR-REV</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is a contingency equipment on an ordinary contingency - 1 Line (5 ACLineSegments)</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>19bfe9d5-5d04-4c3c-9919-ca1b2d1215ae</cim:IdentifiedObject.mRID>
+		<cim:ContingencyElement.Contingency rdf:resource="#_7e31c67d-67ba-4592-8ac1-9e806d697c8e"/>
+		<cim:ContingencyEquipment.contingentStatus rdf:resource="http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService"/>
+		<cim:ContingencyEquipment.Equipment rdf:resource="#_1875fa42-70b7-4bfc-afdd-4eee8b6ddece"/>
+	</cim:ContingencyEquipment>
+
+	<nc:OrdinaryContingency rdf:ID="_7e31c67d-67ba-4592-8ac1-9e806d697007">
+		<cim:IdentifiedObject.name>OrdinaryContingency_C_ASR-TJE</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is an ordinary contingency - Line</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>7e31c67d-67ba-4592-8ac1-9e806d697007</cim:IdentifiedObject.mRID>
+		<nc:Contingency.normalMustStudy>true</nc:Contingency.normalMustStudy>
+	</nc:OrdinaryContingency>
+	<cim:ContingencyEquipment rdf:ID="_19bfe9d5-5d04-4c3c-9919-ca1b2d121007">
+		<cim:IdentifiedObject.name>ContingencyEquipment_C_ASR-TJE</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is a contingency equipment on an ordinary contingency - 1 Line (12 ACLineSegments)</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>19bfe9d5-5d04-4c3c-9919-ca1b2d121007</cim:IdentifiedObject.mRID>
+		<cim:ContingencyElement.Contingency rdf:resource="#_7e31c67d-67ba-4592-8ac1-9e806d697007"/>
+		<cim:ContingencyEquipment.contingentStatus rdf:resource="http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService"/>
+		<cim:ContingencyEquipment.Equipment rdf:resource="#_f9fbcffd-de8b-4a25-852e-6f461f21bb03"/>
+	</cim:ContingencyEquipment>
+
+	<nc:OrdinaryContingency rdf:ID="_7e31c67d-67ba-4592-8ac1-9e806d697009">
+		<cim:IdentifiedObject.name>OrdinaryContingency_C_KAS-LAG</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is an ordinary contingency - Line</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>7e31c67d-67ba-4592-8ac1-9e806d697009</cim:IdentifiedObject.mRID>
+		<nc:Contingency.normalMustStudy>true</nc:Contingency.normalMustStudy>
+	</nc:OrdinaryContingency>
+	<cim:ContingencyEquipment rdf:ID="_19bfe9d5-5d04-4c3c-9919-ca1b2d121009">
+		<cim:IdentifiedObject.name>ContingencyEquipment_C_KAS-LAG</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is a contingency equipment on an ordinary contingency - 1 Line (1 ACLineSegment)</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>19bfe9d5-5d04-4c3c-9919-ca1b2d121007</cim:IdentifiedObject.mRID>
+		<cim:ContingencyElement.Contingency rdf:resource="#_7e31c67d-67ba-4592-8ac1-9e806d697009"/>
+		<cim:ContingencyEquipment.contingentStatus rdf:resource="http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService"/>
+		<cim:ContingencyEquipment.Equipment rdf:resource="#_4565d8dc-9510-4589-b7c1-7a28c9b740cf"/>
+	</cim:ContingencyEquipment>
+
+	<nc:OrdinaryContingency rdf:ID="_7e31c67d-67ba-4592-8ac1-9e806d697008">
+		<cim:IdentifiedObject.name>OrdinaryContingency_E_KNA-THY_1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is an ordinary contingency - on a Line</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>7e31c67d-67ba-4592-8ac1-9e806d697008</cim:IdentifiedObject.mRID>
+		<nc:Contingency.normalMustStudy>true</nc:Contingency.normalMustStudy>
+	</nc:OrdinaryContingency>
+	<cim:ContingencyEquipment rdf:ID="_19bfe9d5-5d04-4c3c-9919-ca1b2d121008">
+		<cim:IdentifiedObject.name>ContingencyEquipment_E_KNA-THY_1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is a contingency equipment on an ordinary contingency - 1 Line (1 ACLineSegment)</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>19bfe9d5-5d04-4c3c-9919-ca1b2d121008</cim:IdentifiedObject.mRID>
+		<cim:ContingencyElement.Contingency rdf:resource="#_7e31c67d-67ba-4592-8ac1-9e806d697008"/>
+		<cim:ContingencyEquipment.contingentStatus rdf:resource="http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService"/>
+		<cim:ContingencyEquipment.Equipment rdf:resource="#_685167e6-e5c7-49cd-add3-b5fc33be0ca3"/>
+	</cim:ContingencyEquipment>
+
+	<nc:OrdinaryContingency rdf:ID="_7e31c67d-67ba-4592-8ac1-9e806d697010">
+		<cim:IdentifiedObject.name>OrdinaryContingency_C_FGD-LAG</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is an ordinary contingency - on a Line</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>7e31c67d-67ba-4592-8ac1-9e806d697010</cim:IdentifiedObject.mRID>
+		<nc:Contingency.normalMustStudy>true</nc:Contingency.normalMustStudy>
+	</nc:OrdinaryContingency>
+	<cim:ContingencyEquipment rdf:ID="_19bfe9d5-5d04-4c3c-9919-ca1b2d121010">
+		<cim:IdentifiedObject.name>ContingencyEquipment_C_FGD-LAG</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is a contingency equipment on an ordinary contingency - 1 Line (6 ACLineSegments)</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>19bfe9d5-5d04-4c3c-9919-ca1b2d121010</cim:IdentifiedObject.mRID>
+		<cim:ContingencyElement.Contingency rdf:resource="#_7e31c67d-67ba-4592-8ac1-9e806d697010"/>
+		<cim:ContingencyEquipment.contingentStatus rdf:resource="http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService"/>
+		<cim:ContingencyEquipment.Equipment rdf:resource="#_cad7b3e7-cbc1-46f3-a567-c706f7b9ebb6"/>
+	</cim:ContingencyEquipment>
+
+	<nc:OrdinaryContingency rdf:ID="_7e31c67d-67ba-4592-8ac1-9e806d697011">
+		<cim:IdentifiedObject.name>OrdinaryContingency_C_KIN-LAG</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is an ordinary contingency - on a Line</cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>7e31c67d-67ba-4592-8ac1-9e806d697011</cim:IdentifiedObject.mRID>
+		<nc:Contingency.normalMustStudy>true</nc:Contingency.normalMustStudy>
+	</nc:OrdinaryContingency>
+	<cim:ContingencyEquipment rdf:ID="_19bfe9d5-5d04-4c3c-9919-ca1b2d121011">
+		<cim:IdentifiedObject.name>ContingencyEquipment_C_KIN-LAG</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.description>This is a contingency equipment on an ordinary contingency - 1 Line (6 ACLineSegments) </cim:IdentifiedObject.description>
+		<cim:IdentifiedObject.mRID>19bfe9d5-5d04-4c3c-9919-ca1b2d121010</cim:IdentifiedObject.mRID>
+		<cim:ContingencyElement.Contingency rdf:resource="#_7e31c67d-67ba-4592-8ac1-9e806d697011"/>
+		<cim:ContingencyEquipment.contingentStatus rdf:resource="http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService"/>
+		<cim:ContingencyEquipment.Equipment rdf:resource="#_43eb2ca7-2913-49b5-990c-5566bb44a8cf"/>
+	</cim:ContingencyEquipment>
+
+</rdf:RDF>
