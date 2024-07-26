@@ -5,5 +5,5 @@ COPY . .
 
 EXPOSE 80
 
-CMD ["python", "main.py"]
+CMD ["python", "Application/main.py"]
 

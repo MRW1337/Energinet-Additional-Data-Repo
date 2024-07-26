@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created manually by Lars Truelsen -->
+
 <rdf:RDF xmlns:adms="http://www.w3.org/ns/adms#" xmlns:cim="https://cim.ucaiug.io/ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dcat-cim="https://cim4.eu/ns/dcat-cim#" xmlns:dcterms="http://purl.org/dc/terms/#" xmlns:eumd="https://cim4.eu/ns/Metadata-European#" xmlns:euvoc="http://publications.europa.eu/ontology/euvoc#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:nc="https://cim4.eu/ns/nc#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
 	<md:FullModel rdf:about="urn:uuid:b2d1215a-a124-4b6e-9df5-85ecdce9793b">

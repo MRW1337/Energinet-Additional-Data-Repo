@@ -5,29 +5,21 @@ from fileHandlingMethods import getCgmProfilesFromFolder, convertDictToJasonFile
 
 
 def main(inputArgs):
-    try:
-        print('Input Arguments:')
-        for keys in inputArgs.keys():
-            print(keys + ' : ' + str(inputArgs[keys]))
-    except Exception as e:
-        print('Error in input arguments error: ' + str(e))
-        sys.exit()
-
     # Get all Equipment from the Equipment Profile
-    try:
-        cgmClasses = getCgmProfilesFromFolder(inputArgs['directoryPath'])
-        convertDictToJasonFile(cgmClasses, pathToCgmClasses)
-        createHeaderFileFromDict(cgmClasses, pathToCgmHeader)
-    except Exception as e:
-        print(str(e))
+    #cgmClasses = getCgmProfilesFromFolder(inputArgs['directoryPath'])
+    #convertDictToJasonFile(cgmClasses, pathToCgmClasses)
+    #createHeaderFileFromDict(cgmClasses, pathToCgmHeader)
+
+    # Get profiles
+    cgmClasses = getJson(os.path.abspath(os.path.join('scriptObjectsAsFiles', 'cgmClasses.json')))
 
     # Get JSON database for currently defined ordinary contingencies
-    contingencies = getJson(pathToContingencies)
+    contingenciesDatabase = getJson(pathToContingencies)
 
     # Create reverse dictionary(sort of) for quick lookup and comparison with potential new contingencies. key is equipmentMrid and value is contingencyEquipmentMrid
     existingContingencies = {}
-    for key in contingencies['ContingencyEquipment'].keys():
-        equipmentMrid = contingencies['ContingencyEquipment'][key]['ContingencyEquipment.Equipment']
+    for key in contingenciesDatabase['ContingencyEquipment'].keys():
+        equipmentMrid = contingenciesDatabase['ContingencyEquipment'][key]['ContingencyEquipment.Equipment']
         existingContingencies[equipmentMrid] = key
 
     # Create dictionary of equipment to create contingencies on
@@ -36,22 +28,21 @@ def main(inputArgs):
         print('Creating CO profile for:', selectedProfile)
         fullModeldict = cgmClasses[selectedProfile]['FullModel']
         contingencyEquipment = buildcontingencyEquipmentList(inputArgs, cgmClasses[selectedProfile], cgmClasses.get(eqbdKey, {'BaseVoltage': {}}))
-        createContingencyProfile(fullModeldict, contingencies, contingencyEquipment, existingContingencies, pathToNewContingencies, selectedProfile)
+        createContingencyProfile(fullModeldict, contingenciesDatabase, contingencyEquipment, existingContingencies, pathToNewContingencies, selectedProfile)
 
-    # Load newly created profiles into database for future comparison
-    coProfiles = getCgmProfilesFromFolder(pathToNewContingencies)
-    database = getJson(pathToDatabase)
-    if database is None:
-        database = {'OrdinaryContingency': {}, 'ContingencyEquipment': {}}
-    # Append dictionaries horisontaly'
-    for file in coProfiles.keys():
-        for category in coProfiles[file].keys():
-            if category == 'OrdinaryContingency':
-                database[category].update(coProfiles[file][category])
-            elif category == 'ContingencyEquipment':
-                database[category].update(coProfiles[file][category])
+    #  Loop Through newly created contingencies and contingencyEquipment and save new 
+    newContingencies = getCgmProfilesFromFolder(os.path.abspath(os.path.join('createdContingencies')))
+    for profile in newContingencies:
+        for key, value in newContingencies[profile]['OrdinaryContingency'].items():
+            if key not in contingenciesDatabase['OrdinaryContingency']:
+                contingenciesDatabase['OrdinaryContingency'][key] = value
 
-    convertDictToJasonFile(database, pathToDatabase)
+        for key, value in newContingencies[profile]['ContingencyEquipment'].items():
+            if key not in contingenciesDatabase['ContingencyEquipment']:
+                contingenciesDatabase['ContingencyEquipment'][key] = value
+        
+    # save Database
+    convertDictToJasonFile(contingenciesDatabase, pathToDatabase)
 
 
 # Define input arguments as a dictionary
@@ -68,7 +59,7 @@ inputArgs = {
 # Paths
 pathToCgmClasses = os.path.abspath(os.path.join('scriptObjectsAsFiles', 'cgmClasses.json'))
 pathToCgmHeader = os.path.abspath(os.path.join('scriptObjectsAsFiles', 'cgmClasses.txt'))
-pathToContingencies = os.path.abspath(os.path.join('Database', 'storedContingencies.json'))
+pathToContingencies = os.path.abspath(os.path.join('database', 'storedContingencies.json'))
 pathToNewContingencies = os.path.abspath(os.path.join('createdContingencies'))
 pathToDatabase = os.path.abspath(os.path.join('database', 'storedContingencies.json'))
 # Call main and start application

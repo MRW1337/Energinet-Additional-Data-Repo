@@ -2,7 +2,8 @@ import uuid
 import xml.etree.ElementTree as ET
 import os
 from xml.dom import minidom
-from datetime import datetime
+from datetime import datetime, timezone
+
 
 
 def createContingencyProfile(fullModeldict, contingency, contingencyEquipment, existingContingencies, pathToNewContingencies, selectedProfile):
@@ -44,13 +45,14 @@ def createContingencyProfile(fullModeldict, contingency, contingencyEquipment, e
     ET.SubElement(full_model, 'dcterms:conformsTo').text = 'https://ap.cim4.eu/Contingency-EU/2.3'
     ET.SubElement(full_model, 'eumd:Model.applicationSoftware').text = 'Pluto - Additional Data'
     ET.SubElement(full_model, 'dcterms:Model.description').text = 'Contingencies for:' + fullModeldict[eqModelMrid]['Model.description']
-    ET.SubElement(full_model, 'prov:Model.generatedAtTime').text = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    ET.SubElement(full_model, 'prov:Model.generatedAtTime').text = str(datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     ET.SubElement(full_model, 'dcterms:publisher', {'rdf:resource': "https://www.energinet.dk/Pluto/AdditionalData"})
     ET.SubElement(full_model, 'dcterms:Model.references', {'rdf:resource': '#_' + eqModelMrid})
     ET.SubElement(full_model, 'dcat:Model.keyword').text = 'CO'
     ET.SubElement(full_model, 'dcat:version').text = str(1)
-    ET.SubElement(full_model, 'dcat:Model.startDate').text = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    ET.SubElement(full_model, 'dcat:Model.endDate').text = str(datetime.now().replace(year=datetime.now().year + 1).strftime("%Y-%m-%d %H:%M:%S"))
+    ET.SubElement(full_model, 'dcat:Model.startDate').text = str(datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    ET.SubElement(full_model, 'dcat:Model.endDate').text = str(datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+
 
     # loop through list of contingencies to create
     for key, attributes in contingencyEquipment.items():
@@ -59,9 +61,9 @@ def createContingencyProfile(fullModeldict, contingency, contingencyEquipment, e
         if key not in existingContingencies:
             contingencyEquipmentMrid = str(uuid.uuid4())
             ordinaryContingencyMrid = str(uuid.uuid4())
-            ocNameText = 'ordinaryContingency-' + attributes[1]
-            ocDescriptionText = ''
-            ocNormalMustStudyText = 'true'
+            ocNameText = 'OrdinaryContingency for ' + attributes[0] + ': ' + attributes[1]
+            ocDescriptionText = attributes[3]
+            ocNormalMustStudyText = 'True'
             ceNameText = attributes[1]
             ceDescriptionText = attributes[3]
             ceContingentStatusText = 'http://iec.ch/TC57/CIM100#ContingencyEquipmentStatusKind.outOfService'
